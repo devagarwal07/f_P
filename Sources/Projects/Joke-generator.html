@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tell Me A Joke</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background: #dff7ff;
+      font-family: monospace;
+    }
+
+    .container {
+      min-height: 100vh;
+      min-width: 100vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #box {
+      background: #333;
+      min-height: 50vh;
+      width: 80vw;
+      text-align: justify;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px solid black;
+      color: white;
+      border-radius: 10px;
+      font-size: 30px;
+      padding: 50px;
+      margin: 30px;
+      user-select: none;
+      text-align: center;
+    }
+
+    button,
+    .heading {
+      border: 2px solid dodgerblue;
+      padding: 10px;
+      font-size: 26px;
+      border-radius: 6px;
+      margin: 30px;
+      background: dodgerblue;
+      transform: scale(1);
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0px 0px 10px #000;
+    }
+
+    button {
+      width: 300px;
+      cursor: pointer;
+    }
+
+    .heading {
+      user-select: none;
+      padding: 10px 30px;
+      color: #333;
+      background-color: lightcyan;
+    }
+
+    button:hover {
+      box-shadow: none;
+    }
+
+    button:active {
+      /* color: dodgerblue;
+            background: transparent; */
+      transform: scale(0.98);
+      background-color: #dff7ff;
+      color: dodgerblue;
+    }
+
+    @media screen and (max-width:425px) {
+      .container {
+        background-color: #fff;
+      }
+
+      #box {
+        padding: 10px;
+        font-size: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="heading"> Joke Generator </div>
+    <div id="box">Here is your Joke.</div>
+    <button onclick="RandomJoke()">Generate New</button>
+  </div>
+  <script>
+    const jokes = [
+      "Why don't scientists trust atoms? Because they make up everything.",
+      "Parallel lines have so much in common. It’s a shame they’ll never meet.",
+      "What did one wall say to the other wall? 'I'll meet you at the corner.'",
+      "Did you hear about the mathematician who's afraid of negative numbers? He'll stop at nothing to avoid them.",
+      "I told my wife she was drawing her eyebrows too high. She looked surprised.",
+      "I'm reading a book on anti-gravity. It's impossible to put down.",
+      "Why did the scarecrow win an award? Because he was outstanding in his field.",
+      "How does a penguin build its house? Igloos it together.",
+      "What do you call an alligator in a vest? An investigator.",
+      "I used to play piano by ear, but now I use my hands.",
+      "Did you hear about the kidnapping at the park? They woke up.",
+      "The furniture store keeps calling me. All I wanted was one nightstand.",
+      "Why did the bicycle fall over? It was two-tired.",
+      "I’m reading a book on the history of glue. I just can’t seem to put it down.",
+      "Want to hear a construction joke? Oh, sorry, I’m still working on that one.",
+      "I used to be a baker, but I couldn't make enough dough.",
+      "Why did the scarecrow become a successful neurosurgeon? He was outstanding in his field.",
+      "I told my wife she should embrace her mistakes. She gave me a hug.",
+      "I asked the librarian if they had a book on Pavlov’s dog and Schrödinger’s cat. She said it rang a bell, but she wasn’t sure if it was there or not.",
+      "Why did the golfer bring two pairs of pants? In case they got a hole in one.",
+      "What do you get when you cross a snowman and a vampire? Frostbite.",
+      "Why don’t skeletons fight each other? They don’t have the guts.",
+      "I couldn’t figure out why the baseball kept getting larger. Then it hit me.",
+      "Don’t trust atoms. They make up everything.",
+      "What did one toilet say to the other toilet? You look a bit flushed.",
+      "I used to be a baker until I got burnt out.",
+      "I’m on a seafood diet. I see food and I eat it.",
+      "I told my computer I needed a break. Now it won’t stop sending me Kit-Kats.",
+      "I’m reading a book about anti-gravity. It's impossible to put down!",
+      "Why do seagulls fly over the sea? Because if they flew over the bay, they’d be called bagels!",
+      "What do you call fake spaghetti? An impasta.",
+      "I used to play piano by ear, but now I use my hands.",
+      "Did you hear about the Italian chef that died? He pasta way.",
+      "I'm terrified of elevators, but I'm taking steps to avoid them.",
+      "Why was the belt arrested? For holding up a pair of pants.",
+      "What do you get when you cross a snowman with a vampire? Frostbite!",
+      "I'm reading a book on the history of glue. I just can't seem to put it down.",
+      "Why did the coffee file a police report? It got mugged.",
+      "I used to be a baker but I couldn't make enough dough.",
+      "How do you organize a space party? You planet.",
+      "I’m reading a book on the history of glue. I just can’t seem to put it down.",
+      "How does a penguin build its house? Igloos it together.",
+      "Did you hear about the kidnapping at the park? They woke up.",
+      "What do you call a factory that makes okay products? A satisfactory.",
+      "I used to be a baker, but I couldn’t make enough dough.",
+      "Why don't some couples go to the gym? Because some relationships don't work out!",
+      "What kind of shoes do ninjas wear? Sneakers.",
+      "What do you get when you cross a snowman and a dog? Frostbite.",
+      "What’s a skeleton’s least favorite room in the house? The living room.",
+      "I told my wife she was drawing her eyebrows too high. She looked surprised.",
+      "I’m reading a book on anti-gravity. It’s impossible to put down.",
+      "I told my wife she should embrace her mistakes. She gave me a hug.",
+      "Why was the math book sad? It had too many problems.",
+      "What do you get when you cross a snowman and a vampire? Frostbite.",
+      "Why don’t scientists trust atoms? Because they make up everything.",
+      "Parallel lines have so much in common. It’s a shame they’ll never meet.",
+      "What did one wall say to the other wall? I'll meet you at the corner.",
+      "Did you hear about the mathematician who’s afraid of negative numbers? He’ll stop at nothing to avoid them.",
+      "I told my wife she was drawing her eyebrows too high. She looked surprised.",
+      "I'm reading a book on anti-gravity. It's impossible to put down.",
+      "Why did the scarecrow win an award? Because he was outstanding in his field.",
+      "How does a penguin build its house? Igloos it together.",
+      "What do you call an alligator in a vest? An investigator.",
+      "I used to play piano by ear, but now I use my hands.",
+      "Did you hear about the kidnapping at the park? They woke up.",
+      "The furniture store keeps calling me. All I wanted was one nightstand.",
+      "Why did the bicycle fall over? It was two-tired.",
+      "I’m reading a book on the history of glue. I just can’t seem to put it down.",
+      "Want to hear a construction joke? Oh, sorry, I’m still working on that one.",
+      "I used to be a baker, but I couldn’t make enough dough.",
+      "Why did the scarecrow become a successful neurosurgeon? He was outstanding in his field.",
+      "I told my wife she should embrace her mistakes. She gave me a hug.",
+      "I asked the librarian if they had a book on Pavlov’s dog and Schrödinger’s cat. She said it rang a bell, but she wasn’t sure if it was there or not.",
+      "Why did the golfer bring two pairs of pants? In case they got a hole in one.",
+      "Why don’t skeletons fight each other? They don’t have the guts.",
+      "I couldn’t figure out why the baseball kept getting larger. Then it hit me.",
+      "What did one toilet say to the other toilet? You look a bit flushed.",
+      "I used to be a baker until I got burnt out.",
+      "I’m on a seafood diet. I see food and I eat it.",
+      "I told my computer I needed a break. Now it won’t stop sending me Kit-Kats.",
+      "Why do seagulls fly over the sea? Because if they flew over the bay, they’d be called bagels!",
+      "What do you call fake spaghetti? An impasta.",
+      "I used to play piano by ear, but now I use my hands.",
+      "Did you hear about the Italian chef that died? He pasta way.",
+      "I'm terrified of elevators, but I'm taking steps to avoid them.",
+      "Why was the belt arrested? For holding up a pair of pants.",
+      "What do you get when you cross a snowman with a vampire? Frostbite!",
+      "I'm reading a book on the history of glue. I just can't seem to put it down.",
+      "Why did the coffee file a police report? It got mugged.",
+      "I used to be a baker but I couldn't make enough dough.",
+      "How do you organize a space party? You planet.",
+      "I’m reading a book on the history of glue. I just can’t seem to put it down.",
+      "How does a penguin build its house? Igloos it together.",
+      "Did you hear about the kidnapping at the park? They woke up.",
+      "What do you call a factory that makes okay products? A satisfactory.",
+      "I used to be a baker, but I couldn’t make enough dough.",
+      "Why don't some couples go to the gym? Because some relationships don't work out!",
+      "What kind of shoes do ninjas wear? Sneakers.",
+      "What do you get when you cross a snowman and a dog? Frostbite.",
+      "What’s a skeleton’s least favorite room in the house? The living room.",
+      // Add more jokes here
+    ];
+    let i = 0;
+    function RandomJoke() {
+      if (jokes.length === 0) {
+        document.getElementById("box").innerHTML = "No more jokes available!";
+        return;
+      }
+      i++;
+      let num = Math.floor(Math.random() * jokes.length);
+      let selectedJoke = jokes[num];
+      jokes.splice(num, 1); // Remove the displayed joke from the array
+      document.getElementById("box").innerHTML = i + ". " + selectedJoke;
+    }
+  </script>
+</body>
+
+</html>

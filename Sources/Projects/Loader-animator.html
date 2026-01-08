@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Loader</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: var(--d-clr);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        font-family: monospace;
+        /* font-family: ; */
+      }
+      :root {
+        --d-clr: rgb(44 51 68);
+        --ltc: rgb(239, 239, 239);
+        --clr2:rgb(121, 68, 221);
+      }
+      .loader-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 90%;
+        min-height: 100%;
+      }
+      svg {
+        /* width: 50rem; */
+        width: 100%;
+      }
+      svg text {
+        stroke: var(--ltc);
+        stroke-width: 0.5rem;
+        fill: var(--clr2);
+        font-weight: 500;
+        /* color: ; */
+        font-size: 3rem;
+        letter-spacing: 2px;
+      }
+      .text-body,
+      .text-dot {
+        stroke: var(--ltc);
+        animation: one 2s ease-in-out infinite alternate;
+      }
+      .text-dot {
+        stroke: var(--ltc);
+        fill: var(--ltc);
+        /* animation:  two 1s ease-in-out infinite alternate ; */
+      }
+      @keyframes one {
+        0% {
+          fill: transparent;
+          stroke: var(--ltc);
+          stroke-width: 1.5;
+          stroke-dashoffset: 25%;
+          stroke-dasharray: 0 30%;
+        }
+        50% {
+          fill: transparent;
+          stroke: var(--ltc);
+          stroke-width: 1.5;
+        }
+        80%,
+        100% {
+          fill: var(--ltc);
+          stroke: transparent;
+          stroke-width: 0;
+          stroke-dashoffset: -25%;
+          stroke-dasharray: 30% 0;
+        }
+      }
+      @keyframes two {
+        0%,
+        60% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+      #animate {
+        display: flex;
+        position: absolute;
+        top: 5%;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        border: 2px solid var(--d-clr);
+        color: var(--d-clr);
+        background-color: var(--ltc);
+        padding: 20px;
+        border-radius: 10px;
+        outline: 1px solid var(--ltc);
+        cursor: pointer;
+        transition: all ease-in-out 0.51s;
+      }
+      #animate:hover {
+        color: var(--ltc);
+        border-color: var(--ltc);
+        background-color: var(--d-clr);
+        outline: -1px solid var(--d-clr);
+        font-size: 21px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="loader-container">
+      <div id="animate" onclick="Animate()">Animate Your Name</div>
+      <svg viewBox="0 0 400 160">
+        <text x="50%" y="50%" dy=".32em" text-anchor="middle" class="text-body">
+          Your Text Here
+        </text>
+        <text
+          x="50%"
+          y="50%"
+          dy="1rem"
+          text-anchor="middle"
+          dx="4em"
+          class="text-dot"
+        >
+          .
+        </text>
+      </svg>
+    </div>
+
+    <script>
+      let text = document.querySelector(".text-body");
+      let svg = document.querySelector("svg");
+      // svg.style.display = "none";
+      function Animate() {
+        // svg.style.display = "block";
+        // document.getElementById('animate').style.display = 'none';
+        let newText = prompt("Enter Your Name", "your name here");
+        let x = newText.toUpperCase();
+        text.innerHTML = x;
+        console.log(x, newText);
+      }
+    </script>
+  </body>
+</html>

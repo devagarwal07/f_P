@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Text Rain</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+        sans-serif;
+    }
+
+    body {
+      height: 100dvh;
+      background-color: #222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .box {
+      padding-top: 10%;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      width: 80%;
+      min-height: 600px;
+    }
+
+    #container {
+      position: relative;
+      height: 80px;
+      width: 250px;
+      background-color: #dff7ff;
+      border-radius: 500px;
+      display: flex;
+      /* box-shadow: 0 0 100px white; */
+      filter: drop-shadow(0 0 20px white);
+    }
+
+    #container::before {
+      content: "";
+      position: absolute;
+      height: 100px;
+      width: 100px;
+      top: -50px;
+      left: 20px;
+      background-color: #dff7ff;
+      border-radius: 50%;
+    }
+
+    #container::after {
+      content: "";
+      position: absolute;
+      height: 150px;
+      width: 150px;
+      top: -80px;
+      right: 20px;
+      background-color: #dff7ff;
+      border-radius: 50%;
+    }
+
+    .ground {
+      position: absolute;
+      width: 90%;
+      bottom: 10px;
+      height: 10px;
+      background-color: #555;
+      z-index: 5;
+      border-radius: 30px;
+      box-shadow: 0 3px 5px black;
+    }
+
+    .text {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
+      text-shadow: 0 0 15px rgba(255, 255, 255, 0.8),
+        0 0 30px rgba(255, 255, 255, 0.65), 0 0 40px rgba(255, 255, 255, 0.5);
+      animation: animate 2s forwards linear;
+      z-index: 1;
+    }
+
+    @keyframes animate {
+      0% {
+        transform: translateY(0) scale(1);
+      }
+
+      60% {
+        transform: translateY(375px) scale(0.7);
+      }
+
+      100% {
+        transform: translateY(375px) scale(0.2);
+      }
+    }
+
+    @keyframes remove {
+      to {
+        transform: scale(0);
+      }
+    }
+
+    /* (min-width:480px) */
+    @media (max-width: 768px) {
+      .box {
+        padding-top: 100px;
+      }
+
+      #container {
+        z-index: 100;
+      }
+
+      .ground {
+        bottom: 50px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <div id="container"></div>
+    <!-- <div class="ground"></div> -->
+  </div>
+  <script>
+    const cont = document.getElementById("container");
+    const str = "abcdefghijklmnopqrstuvwxyz0123456789";
+    // const str='01'
+    setInterval(() => {
+      let left = Math.floor(Math.random() * 230);
+      let txt = str[Math.floor(Math.random() * str.length)].toUpperCase();
+      let size = Math.random() * 1.5;
+      let time = Math.random() * 1;
+      const text = document.createElement("div");
+      text.innerHTML = txt;
+      text.classList.add("text");
+      text.style.left = left + "px";
+      text.style.fontSize = 0.5 + size + "em";
+      text.style.animationDuration = 1.5 + time + "s";
+      cont.appendChild(text);
+      setTimeout(() => {
+        document.querySelectorAll(".text")[0].style.animation = "remove";
+        document.querySelectorAll(".text")[0].style.animationDuration =
+          1 + "s";
+        cont.removeChild(document.querySelectorAll(".text")[0]);
+      }, 2000);
+    }, 20);
+  </script>
+</body>
+
+</html>

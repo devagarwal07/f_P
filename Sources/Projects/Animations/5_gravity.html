@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamic way to draw circles</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow: hidden;
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="box"></div>
+    <canvas></canvas>
+
+    <script>
+      var Canvas = document.querySelector("canvas");
+      Canvas.width = innerWidth;
+      Canvas.height = innerHeight;
+      let c = Canvas.getContext("2d");
+      let colorArray = ["#2c3e50", "#e74c3c", "#ecf0f1", "#3498db", "#2980b9"];
+      let gravity = 2;
+      let friction = 0.95;
+      window.addEventListener("resize", function () {
+        Canvas.width = innerWidth;
+        Canvas.height = innerHeight;
+        init();
+      });
+      function ball(x, y, dx, dy, r, color) {
+        this.x = x;
+        this.y = y;
+        this.dx = dx;
+        this.dy = dy;
+        this.r = r;
+        this.color = color;
+        this.draw = () => {
+          c.beginPath();
+          c.arc(this.x, this.y, this.r, 0, Math.PI * 2, false);
+          c.strokeStyle = "black";
+          c.fillStyle = this.color;
+          c.fill();
+          c.stroke();
+        };
+        this.update = () => {
+          this.draw();
+          if (this.dy >= 1) {
+            this.x += this.dx;
+          }
+          this.y += this.dy;
+          if (this.y + this.r + this.dy >= innerHeight) {
+            this.dy = -this.dy * friction;
+          } else {
+            this.dy += gravity;
+          }
+          if (
+            this.x + this.r + this.dx >= innerWidth ||
+            this.x + this.dx + this.r <= 0
+          ) {
+            this.dx = -this.dx;
+          }
+
+        };
+      }
+
+      window.addEventListener("click", function (e) {
+        init();
+      });
+      var ballarray = [];
+      function init() {
+        ballarray = [];
+        for (let i = 0; i < 800; i++) {
+          r = Math.random() * 50 + 5;
+          x = Math.random() * (innerWidth - 2 * r) + r;
+          y = Math.random() * (innerHeight - 2 * r) + r;
+          dx = Math.random() * 5;
+          dy = Math.random() * 5;
+          clr = colorArray[Math.floor(Math.random() * colorArray.length)];
+          ballarray.push(new ball(x, y, dx, dy, r, clr));
+        }
+      }
+
+      function animate() {
+        requestAnimationFrame(animate);
+        c.clearRect(0, 0, innerWidth, innerHeight);
+        for (let i = 0; i < ballarray.length; i++) {
+          ballarray[i].update();
+        }
+      }
+      console.log(ballarray);
+      init();
+      animate();
+    </script>
+  </body>
+</html>

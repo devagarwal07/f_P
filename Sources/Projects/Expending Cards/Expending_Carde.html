@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Gallery</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+      body {
+        background-color: dodgerblue;
+      }
+      .cont {
+        display: flex;
+        flex-direction: column;
+        height: 95vh;
+        width: 95vw;
+      }
+      h1 {
+        font-size: 35px;
+        text-transform: uppercase;
+        letter-spacing: 4px;
+        font-family: monospace;
+        padding: 10px;
+        text-align: center;
+        border-bottom: 3px solid black;
+      }
+      .imgcont {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;
+        overflow: hidden;
+      }
+      .img {
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 80vh;
+        border-radius: 15px;
+        color: dodgerblue;
+        cursor: pointer;
+        flex: 0.5;
+        margin: 10px;
+        position: relative;
+        transition: flex 0.7s ease-in;
+        backdrop-filter: blur(10px);
+      }
+
+      h3 {
+        position: absolute;
+        background-image: url();
+        bottom: -100px;
+        opacity: 0;
+        font-size: 20px;
+        font-family: monospace;
+      }
+      .active {
+        flex-grow: 5;
+      }
+
+      .img::target-text h3 {
+        font-size: 35px;
+        opacity: 1;
+        bottom: 20px;
+        left: 20px;
+        transition: all 1s;
+      }
+      .img:hover h3 {
+        font-size: 35px;
+        opacity: 1;
+        bottom: 20px;
+        left: 20px;
+        transition: all 1s;
+        transition-delay: 1s;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cont">
+      <h1>Image Gallery</h1>
+      <div class="imgcont">
+        <div
+          class="img"
+          style="background-image: url(img2.jpg)"
+        >
+          <h3>Image no 1</h3>
+        </div>
+        <div
+          class="img"
+          style="background-image: url(img3.jpg)"
+        >
+          <h3>Image no 2</h3>
+        </div>
+        <div
+          class="img"
+          style="background-image: url(img4.jpg)"
+        >
+          <h3>Image no 3</h3>
+        </div>
+        <div
+          class="img"
+          style="background-image: url(img5.jpg)"
+        >
+          <h3>Image no 4</h3>
+        </div>
+        <div
+          class="img"
+          style="background-image: url(img6.jpg)"
+        >
+          <h3>Image no 5</h3>
+        </div>
+        <!-- <div
+          class="img"
+          style="background-image: url(img7.jpg)"
+        >
+          <h3>Image no 6</h3>
+        </div> -->
+        <!-- <div
+          class="img"
+          style="background-image: url(img2.jpg)"
+        >
+          <h3>Image no 7</h3>
+        </div> -->
+      </div>
+    </div>
+    <script>
+        // Get all image elements
+        const imageCards = document.querySelectorAll('.img');
+        // Add a click event listener to each image card
+        imageCards.forEach((card) => {
+          card.addEventListener('click', () => {
+            // Toggle the "active" class on the clicked card
+            card.classList.toggle('active');
+            // Loop through all cards and remove the "active" class from other cards
+            imageCards.forEach((otherCard) => {
+              if (otherCard !== card) {
+                otherCard.classList.remove('active');
+              }
+            });
+          });
+        });
+      </script>
+  </body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hover</title>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        min-height: 100dvh;
+        background: #000;
+      }
+      .container {
+        position: relative;
+        height: 100vh;
+        overflow: hidden;
+        animation: animate 4s ease-in-out 1s infinite alternate;
+      }
+      .poly {
+        position: relative;
+        width: 100px;
+        height: 110px;
+        background-color: #000;
+        margin: 1px;
+        clip-path: polygon(
+          50% 0%,
+          100% 25%,
+          100% 75%,
+          50% 100%,
+          0% 75%,
+          0% 25%
+        );
+        transition: 2s;
+      }
+      .poly:hover {
+        transition: 0s;
+        background-color: dodgerblue;
+      }
+      .poly::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50%;
+        height: 100%;
+        pointer-events: none;
+        background-color: rgba(255, 255, 255, 0.01);
+      }
+      .row {
+        display: inline-flex;
+        margin-top: -32px;
+        margin-left: -50px;
+      }
+      .row:nth-child(even) {
+        margin-left: 1px;
+      }
+      @keyframes animate {
+        0% {
+          filter: hue-rotate(0deg);
+        }
+        100% {
+          filter: hue-rotate(360deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+      </div>
+      <div class="row">
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+      </div>
+      <div class="row">
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+      </div>
+      <div class="row">
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+      </div>
+      <div class="row">
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+      </div>
+      <div class="row">
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+      </div>
+      <div class="row">
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+      </div>
+      <div class="row">
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+      </div>
+      <div class="row">
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+      </div>
+      <div class="row">
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+        <div class="poly"></div>
+      </div>
+    </div>
+    <script>
+      function main() {
+        let c = "0123456789ABCDEF";
+        function Generatecolor() {
+          let color = "#";
+          for (let i = 0; i < 6; i++) {
+            color += c[Math.floor(Math.random() * 16)].toString();
+          }
+          return color;
+        }
+
+        let poly = document.getElementsByClassName("poly");
+        console.log(poly);
+        // document.body.addEventListener('mouseleave')
+        for (let i = 0; i < poly.length; i++) {
+          let e = poly[i];
+          poly[i].addEventListener("mouseenter", () => {
+            poly[i].style.backgroundColor = `${Generatecolor()}`;
+          });
+          poly[i].addEventListener("mouseleave", () => {
+            poly[i].style.backgroundColor = "#000";
+          });
+        }
+      }
+    </script>
+  </body>
+</html>

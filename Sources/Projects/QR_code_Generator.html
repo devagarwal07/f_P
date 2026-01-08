@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>QR Code Generator</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      background-color: #dff7ff;
+      min-height: 100dvh;
+      position: relative;
+      gap: 10px;
+    }
+
+    input,
+    button {
+      padding: 10px;
+      border-radius: 10px;
+      font-size: 19px;
+      border: 2px solid #999;
+      outline: none;
+    }
+
+    button {
+      cursor: pointer;
+      background-color: dodgerblue;
+      color: #fff;
+      border: 2px solid #fff;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    label {
+      position: absolute;
+      /* top: 00px; */
+      display: none;
+    }
+
+    h1 {
+      position: absolute;
+      top: 10%;
+    }
+
+    #qrcode {
+      padding: 10px;
+      border: 2px solid black;
+      height: 300px;
+      width: 300px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      display: none;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>QR Code Generator</h1>
+    <div id="qrcode">Your QR code Will be Here</div>
+    <input type="text" id="urlInput" placeholder="Enter Your Url" />
+    <label for="urlInput">URL</label>
+    <button id="generate" onclick="generateQRcode()">Generate QR Code</button>
+  </div>
+
+  <script src="https://cdn.rawgit.com/davidshimjs/qrcodejs/gh-pages/qrcode.min.js"></script>
+  <script>
+    document.getElementById("urlInput").addEventListener("keypress", function (event) {
+      if (event.key === 'Enter') {
+        if (document.getElementById("urlInput").value !== "") {
+          generateQRcode();
+        }
+      }
+    });
+    function generateQRcode() {
+      var url = document.getElementById("urlInput").value;
+      var qrcodeDiv = document.getElementById("qrcode");
+      document.getElementById("qrcode").style.display = 'flex';
+      if (url == "") {
+        qrcodeDiv.innerHTML = "Please Enter your URL first.";
+      } else {
+        //clear privous qr code
+        qrcodeDiv.innerHTML = "";
+        //generate
+        var qrcode = new QRCode(qrcodeDiv, {
+          text: url,
+          width: 280,
+          height: 280,
+        });
+      }
+    }
+  </script>
+</body>
+
+</html>

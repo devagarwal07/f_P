@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Collision - 2</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        overflow: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas></canvas>
+    <script>
+      let canvas = document.querySelector("canvas");
+      canvas.width = innerWidth;
+      canvas.height = innerHeight;
+      //   canvas.style.background = "#0ff";
+      var c = canvas.getContext("2d");
+      function resolveCollision(particle, otherParticle) {
+        const xVelocityDiff = particle.velocity.x - otherParticle.velocity.x;
+        const yVelocityDiff = particle.velocity.y - otherParticle.velocity.y;
+
+        const xDist = otherParticle.x - particle.x;
+        const yDist = otherParticle.y - particle.y;
+
+        // Prevent accidental overlap of particles
+        if (xVelocityDiff * xDist + yVelocityDiff * yDist >= 0) {
+          // Grab angle between the two colliding particles
+          const angle = -Math.atan2(
+            otherParticle.y - particle.y,
+            otherParticle.x - particle.x
+          );
+
+          // Store mass in var for better readability in collision equation
+          const m1 = particle.mass;
+          const m2 = otherParticle.mass;
+
+          // Velocity before equation
+          const u1 = rotate(particle.velocity, angle);
+          const u2 = rotate(otherParticle.velocity, angle);
+
+          // Velocity after 1d collision equation
+          const v1 = {
+            x: (u1.x * (m1 - m2)) / (m1 + m2) + (u2.x * 2 * m2) / (m1 + m2),
+            y: u1.y,
+          };
+          const v2 = {
+            x: (u2.x * (m1 - m2)) / (m1 + m2) + (u1.x * 2 * m2) / (m1 + m2),
+            y: u2.y,
+          };
+
+          // Final velocity after rotating axis back to the original location
+          const vFinal1 = rotate(v1, -angle);
+          const vFinal2 = rotate(v2, -angle);
+
+          // Update particle velocities
+          particle.velocity.x = vFinal1.x;
+          particle.velocity.y = vFinal1.y;
+          otherParticle.velocity.x = vFinal2.x;
+          otherParticle.velocity.y = vFinal2.y;
+        }
+      }
+      let mouse = {
+        x: 0,
+        y: 0,
+      };
+      window.addEventListener("mousemove", function (e) {
+        mouse.x = e.x;
+        mouse.y = e.y;
+      });
+      function rotate(velocity, angle) {
+        return {
+          x: velocity.x * Math.cos(angle) - velocity.y * Math.sin(angle),
+          y: velocity.x * Math.sin(angle) + velocity.y * Math.cos(angle),
+        };
+      }
+
+      function ball(x, y, dx, dy, r, clr) {
+        this.x = x;
+        this.y = y;
+        this.dx = dx;
+        this.dy = dy;
+        this.r = r;
+        this.mass = 10;
+        this.o = 0;
+        this.velocity = {
+          x: this.dx,
+          y: this.dy,
+        };
+        this.color = clr;
+        this.draw = () => {
+          c.beginPath();
+          c.arc(this.x, this.y, this.r, 0, Math.PI * 2, false);
+          c.strokeStyle = "black";
+          c.stroke();
+          c.save();
+          c.globalAlpha = this.o;
+          c.fillStyle = this.color;
+          c.fill();
+          c.restore();
+        };
+        this.update = (ballarr) => {
+          this.draw();
+          this.x += this.velocity.x;
+          this.y += this.velocity.y;
+          if (this.x + this.r > innerWidth || this.x - this.r <= 0) {
+            this.velocity.x = -this.velocity.x;
+          }
+          if (this.y + this.r > innerHeight || this.y - this.r <= 0) {
+            this.velocity.y = -this.velocity.y;
+          }
+          // mouse collision
+          if (
+            distance(mouse.x, mouse.y, this.x, this.y) < 120 &&
+            this.o <= 0.5
+          ) {
+            this.o += 0.02;
+            // Math.max(0,this.o);
+          } else if (this.o >= 0) {
+            this.o -= 0.02;
+            this.o = Math.max(0, this.o);
+          }
+          for (let j = 0; j < ballarr.length; j++) {
+            if (this === ballarr[j]) {
+              continue;
+            }
+            if (
+              distance(this.x, this.y, ballarr[j].x, ballarr[j].y) -
+                (r + ballarr[j].r) <=
+              0
+            ) {
+              resolveCollision(this, ballarr[j]);
+            }
+          }
+        };
+      }
+      function randomgenint(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min);
+      }
+      let clr = [
+        "#2c3e50",
+        "#e74c3c",
+        "#ecf0f1",
+        "#3498db",
+        // '#2980b9'
+      ];
+      var ballarr = [];
+      function init() {
+        ballarr = [];
+        document.addEventListener("resize", function () {
+          canvas.width = innerWidth;
+          canvas.height = innerHeight;
+        });
+        for (let i = 0; i < 200; i++) {
+          // let r = Math.random() * 10 + 20;
+          let r = 18;
+          let x = randomgenint(r, canvas.width - r);
+          let y = randomgenint(r, canvas.height - r);
+          // let y = ;
+          let dx = (Math.random() - 0.5) * 5;
+          let dy = (Math.random() - 0.5) * 5;
+          let c = clr[Math.floor(Math.random() * clr.length)];
+          if (i != 0) {
+            for (let j = 0; j < ballarr.length; j++) {
+              if (
+                distance(x, y, ballarr[j].x, ballarr[j].y) -
+                  (r + ballarr[j].r) <=
+                0
+              ) {
+                x = randomgenint(r, canvas.width - r);
+                y = randomgenint(r, canvas.height - r);
+                j = j - 1;
+              }
+            }
+          }
+          ballarr.push(new ball(x, y, dx, dy, r, c));
+        }
+        console.log(ballarr);
+      }
+      function distance(x1, y1, x2, y2) {
+        let x = x1 - x2;
+        let y = y1 - y2;
+        let res = x * x + y * y;
+        return Math.sqrt(res);
+      }
+      function animate() {
+        requestAnimationFrame(animate);
+        c.clearRect(0, 0, innerWidth, innerHeight);
+        // init();
+        for (let i = 0; i < ballarr.length; i++) {
+          ballarr[i].update(ballarr);
+        }
+      }
+        console.log(ballarr);
+      animate();
+      init();
+    </script>
+  </body>
+</html>

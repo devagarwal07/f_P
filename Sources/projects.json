@@ -1,0 +1,451 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "Farm Setu",
+      "category": [
+        "mern",
+        "e-commerce",
+        "agriculture"
+      ],
+      "image": "Sources/Projects/images/farmsetu.png",
+      "description": "A platform connecting farmers directly to consumers, eliminating middlemen and ensuring fair prices.",
+      "demoLink": "https://farmsetu.netlify.app/",
+      "githubLink": "",
+      "icon": "Sources/menuIcon/leaf.svg",
+      "technologies": [
+        "MongoDB",
+        "Express",
+        "React",
+        "Node.js"
+      ],
+      "tags": [
+        "mern",
+        "fullstack",
+        "agriculture",
+        "e-commerce"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Movieflix Ticket Booking",
+      "category": [
+        "mern",
+        "management"
+      ],
+      "image": "Sources/Projects/images/movieflix.png",
+      "description": "An event ticket booking system with seat selection and payment integration for college events.",
+      "demoLink": "https://themovieflixs.netlify.app",
+      "githubLink": "",
+      "icon": "Sources/menuIcon/ticket.svg",
+      "technologies": [
+        "React",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Razorpay API",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "mern",
+        "payment-gateway",
+        "internship-project"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Dry Fruit Junction",
+      "category": [
+        "e-commerce",
+        "mern"
+      ],
+      "image": "Sources/Projects/images/dryfruit-junction.png",
+      "description": "E-commerce platform specializing in premium dry fruits sweets with cart functionality and admin dashboard.",
+      "demoLink": "https://dryfruitjunction.in",
+      "githubLink": "",
+      "icon": "Sources/menuIcon/cart.svg",
+      "technologies": [
+        "React",
+        "Redux",
+        "Realtime",
+        "Tailwind CSS",
+        "Express",
+        "Node.js",
+        "MongoDB"
+      ],
+      "tags": [
+        "e-commerce",
+        "mern",
+        "react",
+        "freelance"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "Codify",
+      "category": [
+        "mern",
+        "education"
+      ],
+      "image": "Sources/Projects/images/codify.png",
+      "description": "A coding platform with interactive tutorials and challenges for learning programming.",
+      "demoLink": "https://codifylearn.netlify.app/",
+      "githubLink": "",
+      "icon": "Sources/menuIcon/terminal.svg",
+      "technologies": [
+        "MongoDB",
+        "Express",
+        "React",
+        "Node.js"
+      ],
+      "tags": [
+        "mern",
+        "fullstack",
+        "education",
+        "coding",
+        "interactive"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Pincode Address",
+      "category": [
+        "utility",
+        "tools",
+        "package"
+      ],
+      "image": "Sources/Projects/images/pincode-address.png",
+      "description": "Real-time Indian address lookup using postal pincode API with auto-complete.",
+      "demoLink": "https://pincode-address.netlify.app/",
+      "githubLink": "",
+      "icon": "Sources/menuIcon/map.svg",
+      "technologies": [
+        "JavaScript",
+        "PostalAPI",
+        "Debounce Search",
+        "npm package"
+      ],
+      "tags": [
+        "api-integration",
+        "npm package"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "OMEX",
+      "category": [
+        "ai",
+        "tools",
+        "mern",
+        "realtime"
+      ],
+      "image": "Sources/Projects/images/omex.png",
+      "description": "OMEX is an AI-powered code optimization platform helping developers improve code quality. It uses Google's Gemini AI for code optimization, generation, complexity analysis, and comparison. The platform combines a modern React frontend featuring real-time code editing with a Node.js backend for AI processing.",
+      "demoLink": "https://omexai.netlify.app/",
+      "githubLink": "",
+      "icon": "Sources/menuIcon/terminal.svg",
+      "technologies": [
+        "React",
+        "API",
+        "Express",
+        "Node.js",
+        "AI",
+        "Tailwind",
+        "Gemini API"
+      ],
+      "tags": [
+        "ai",
+        "gemini",
+        "code-optimization",
+        "realtime",
+        "fullstack"
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Agri Predict",
+      "category": [
+        "ai",
+        "mini-projects",
+        "flask"
+      ],
+      "image": "Sources/Projects/images/agripredict.png",
+      "description": "Agri Predict is an AI-powered crop recommendation system built with Python and Flask. It analyzes soil, climate, and environmental factors to suggest the best-suited crops for maximum yield. Designed for smart agriculture, it offers real-time, low-latency predictions, and supports data-driven decisions through a responsive web interface.",
+      "demoLink": "https://agripredict-fs3w.onrender.com/",
+      "githubLink": "",
+      "icon": "Sources/menuIcon/terminal.svg",
+      "technologies": [
+        "Python",
+        "Flask",
+        "AI",
+        "Agriculture",
+        "Realtime"
+      ],
+      "tags": [
+        "ai",
+        "flask",
+        "crop-recommendation",
+        "smart-agriculture",
+        "python"
+      ]
+    },
+    {
+      "id": 8,
+      "title": "CGPA Calculator",
+      "category": [
+        "react-projects",
+        "education",
+        "mini-projects",
+        "tools"
+      ],
+      "image": "Sources/Projects/images/cgpa.png",
+      "description": "This React-based CGPA Calculator is a user-friendly web application designed for students to quickly and accurately calculate their semester-wise and overall CGPA. With a clean interface and responsive design, it allows easy input of grades and credits, automatically computes results, and provides instant feedback.",
+      "demoLink": "https://rtu-gpa.netlify.app/",
+      "githubLink": "",
+      "icon": "Sources/menuIcon/terminal.svg",
+      "technologies": [
+        "React",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "reactjs",
+        "cgpa",
+        "result",
+        "cgpa-calculator",
+        "tailwindcss"
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Campus Cloud",
+      "category": [
+        "mern",
+        "management",
+        "tools"
+      ],
+      "image": "Sources/Projects/images/campuscloud.png",
+      "description": "A comprehensive MERN stack application for managing college quizzes, tests, and preference forms with role-based access control.",
+      "demoLink": "https://campuscloud.netlify.app/",
+      "githubLink": "",
+      "icon": "Sources/menuIcon/terminal.svg",
+      "technologies": [
+        "MongoDB",
+        "Express",
+        "React",
+        "Node.js",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "mern",
+        "education",
+        "role-management",
+        "quizzes",
+        "tailwindcss"
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Role Switcher Extension",
+      "category": [
+        "extension",
+        "tools",
+        "mini-projects"
+      ],
+      "image": "Sources/Projects/images/roleswitcher.png",
+      "description": "Switch between multiple user accounts on localhost with one click! Save profiles, test roles and permissions effortlessly. Perfect for developers and QA testers to streamline workflows without manual logouts or cookie clearing.",
+      "demoLink": "",
+      "githubLink": "",
+      "icon": "Sources/menuIcon/terminal.svg",
+      "technologies": [
+        "JavaScript",
+        "HTML",
+        "CSS",
+        "Chrome Extension",
+        "Manifest"
+      ],
+      "tags": [
+        "chrome-extension",
+        "javascript",
+        "role-switching",
+        "developer-tools"
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Zunzo",
+      "category": [
+        "mern",
+        "e-commerce",
+        "tools"
+      ],
+      "image": "Sources/Projects/images/zunzo.png",
+      "description": "A full-stack e-commerce platform built with the MERN stack, featuring multi-user roles (customer, seller, admin), real-time product management, and secure JWT authentication. Built with React and Tailwind CSS, it offers an intuitive interface for shopping, product management, and administration.",
+      "demoLink": "https://zunzo.netlify.app/",
+      "githubLink": "",
+      "icon": "Sources/menuIcon/terminal.svg",
+      "technologies": [
+        "React",
+        "Node.js",
+        "MongoDB",
+        "Express",
+        "JWT",
+        "Tailwind CSS"
+      ],
+      "tags": [
+        "mern",
+        "ecommerce",
+        "jwt-authentication",
+        "fullstack",
+        "realtime"
+      ]
+    },
+    {
+      "id": 12,
+      "title": "Smart Todo App",
+      "category": [
+        "react-projects",
+        "tools"
+      ],
+      "image": "Sources/Projects/images/todo-app.png",
+      "description": "Task management application with Add, Mark as complete, Edit, Delete task",
+      "demoLink": "https://csi-to-do-list.netlify.app/",
+      "githubLink": "",
+      "icon": "Sources/menuIcon/checklist.svg",
+      "technologies": [
+        "React",
+        "LocalStorage",
+        "Tailwind CSS",
+        "react-hot-toast"
+      ],
+      "tags": [
+        "toast",
+        "localstorage"
+      ]
+    },
+    {
+      "id": 13,
+      "title": "Jharoka : Image Gallery",
+      "category": [
+        "react-projects",
+        "webpage"
+      ],
+      "image": "Sources/Projects/images/jharoka.png",
+      "description": "A modern image gallery application with filtering, search, and responsive masonry layout.",
+      "demoLink": "https://jharoka.netlify.app/",
+      "githubLink": "",
+      "icon": "Sources/menuIcon/gallery.png",
+      "technologies": [
+        "React",
+        "CSS",
+        "Firebase"
+      ],
+      "tags": [
+        "react-projects",
+        "gallery",
+        "images",
+        "firebase",
+        "masonry"
+      ]
+    },
+    {
+      "id": 14,
+      "title": "Cash Track",
+      "category": [
+        "react-projects",
+        "tools",
+        "webpage"
+      ],
+      "image": "Sources/Projects/images/cash_track.png",
+      "description": "A personal finance application to track expenses, income, and manage budgets with visual analytics.",
+      "demoLink": "https://cash-track.netlify.app",
+      "githubLink": "",
+      "icon": "Sources/menuIcon/money.svg",
+      "technologies": [
+        "React",
+        "CSS",
+        "LocalStorage",
+        "Charts"
+      ],
+      "tags": [
+        "react-projects",
+        "finance",
+        "budget",
+        "tracker",
+        "charts"
+      ]
+    },
+    {
+      "id": 15,
+      "title": "BitWise Learning",
+      "category": [
+        "webpage",
+        "mini-projects"
+      ],
+      "image": "Sources/Projects/images/bitwise-learning.png",
+      "description": "An educational platform for learning computer science and programming concepts.",
+      "demoLink": "https://bitwiselearning.netlify.app/",
+      "githubLink": "",
+      "icon": "Sources/menuIcon/code.svg",
+      "technologies": [
+        "HTML",
+        "CSS",
+        "JavaScript"
+      ],
+      "tags": [
+        "website",
+        "education",
+        "programming",
+        "learning"
+      ]
+    },
+    {
+      "id": 16,
+      "title": "Wizardzs",
+      "category": [
+        "react-projects"
+      ],
+      "image": "Sources/Projects/images/wizardz.png",
+      "description": "A magical UI component library for React developers with customizable themes.",
+      "demoLink": "https://wizardzs.netlify.app/",
+      "githubLink": "#",
+      "icon": "Sources/menuIcon/wand.svg",
+      "technologies": [
+        "React",
+        "CSS",
+        "JavaScript"
+      ],
+      "tags": [
+        "react-projects",
+        "ui-library",
+        "components",
+        "themes"
+      ]
+    },
+    {
+      "id": 17,
+      "title": "To Do List App",
+      "category": [
+        "tools",
+        "react-projects"
+      ],
+      "image": "Sources/Projects/images/to-do.png",
+      "description": "A task management application with features for creating, organizing, and tracking daily tasks.",
+      "demoLink": "Sources/Projects/To-do-app.html",
+      "githubLink": "",
+      "icon": "Sources/menuIcon/checklist.svg",
+      "technologies": [
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "LocalStorage"
+      ],
+      "tags": [
+        "tools",
+        "todo",
+        "productivity",
+        "tasks",
+        "organization"
+      ]
+    }
+  ]
+}

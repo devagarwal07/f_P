@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic way to draw circles</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            overflow: hidden;
+            position: relative;
+        }
+        /* #box{
+          height: 250px;
+          width: 250px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 3px solid black;
+          transform: translate(-50%,-50%);
+          cursor: pointer;
+          position: absolute;
+          left: 0;
+          top: 0;
+        } */
+    </style>
+</head>
+<body>
+  <div id="box"></div>
+    <canvas></canvas>
+    
+    <script>
+        var Canvas = document.querySelector('canvas')
+        Canvas.width=innerWidth;
+        Canvas.height=innerHeight;
+        // Canvas.style.backgroundColor =  `rgba(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)} , ${(Math.random()*0.5)+0.5} )`;
+        let c = Canvas.getContext('2d');
+        let mouse = {
+        x:undefined,
+        y:undefined
+      }
+      let colorArray =[
+        '#2c3e50',
+        '#e74c3c',
+        '#ecf0f1',
+        '#3498db',
+        '#2980b9'
+      ];
+      // colorArray.push('red');
+      // colorArray.push('yellow');
+      // colorArray.push('blue');
+      // colorArray.push('black');
+      let maxr = 40;
+      let minr = 12;
+      let rds = 50;
+      window.addEventListener('mousemove',function(e){ mouse.x = e.x ; mouse.y = e.y;
+        let box = document.getElementById('box');
+        box.style.position = 'absolute';
+        box.style.left = `${event.x}px`;
+        box.style.top = `${event.y}px`;
+      })
+      window.addEventListener('resize', function(){
+        Canvas.width =innerWidth;
+        Canvas.height = innerHeight;
+        init();
+      })
+      function Circle(x1, y1, dx1, dy1, r1,clr) {
+        this.x = x1;
+        this.y = y1;
+        this.dx = dx1;
+        this.dy = dy1;
+        this.r = r1;
+        this.clr =clr;
+        this.min_r = this.r;
+        this.drow = () => {
+          c.beginPath();
+          c.arc(this.x, this.y, this.r, 0, Math.PI * 2, false);
+          c.strokeStyle = "blue";
+          c.stroke();
+          c.fill();
+          c.fillStyle = clr;
+          //   console.log("hello")
+        };
+        this.update = () => {
+          this.x += this.dx;
+          this.y += this.dy;
+          if (this.x + this.r > innerWidth || this.x - this.r <= 0) {
+            this.dx = -this.dx;
+          }
+          if (this.y + this.r > innerHeight || this.y - this.r <= 0) {
+            this.dy = -this.dy;
+          }
+          if ((this.x - mouse.x <= rds ) && (this.x - mouse.x >=-rds) && (this.y - mouse.y <=rds ) && (this.y - mouse.y >=-rds)) {
+            if (this.r <=maxr) {
+              this.r +=10;}
+          }else{
+            if (this.r >= this.min_r) {
+              this.r -=1;
+            }
+            // this.r = 20;
+          }
+          // if ((this.x - mouse.x >5 ) && (this.y - mouse.y >5) ) {
+          //   this.r = 20; 
+          // }
+          
+          this.drow();
+        };
+      }
+      var circleArray = [];
+      function init() {
+        circleArray = [];
+        for (let i = 0; i <800; i++) {
+          r = Math.random() * 10 + 5 ;
+        // r = 20;
+        x = Math.random() * (innerWidth - 2 * r) + r;
+        y = Math.random() * (innerHeight - 2 * r) + r;
+        dx = Math.random() - 0.5 ;
+        dy = Math.random() - 0.5;
+        
+        // dx=dy=1;
+        clr = colorArray[Math.floor(Math.random()*colorArray.length)]
+        // clr =  `rgba(${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)},${Math.floor(Math.random()*255)} , ${(Math.random()*0.5)+0.5} )`;
+        circleArray.push(new Circle(x, y, dx, dy, r,clr));
+      }
+    }
+      
+      function animate() {
+        requestAnimationFrame(animate);
+        c.clearRect(0, 0, innerWidth, innerHeight);
+        for (let i = 0; i < circleArray.length; i++) {
+          circleArray[i].update();
+        }
+      }
+      init();
+      animate();
+      // console.log();
+    </script>
+</body>
+</html>
